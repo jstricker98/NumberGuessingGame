@@ -15,10 +15,10 @@ void printIntroduction()
 Game selectDifficulty()
 {
 	cout << "\nPlease select which difficulty you would like to play.\n\n"
-		"Easy ------- 5 turns to guess a number between 1 and 10\n\n"
-		"Medium ------- 10 turns to guess a number between 1 and 50\n\n"
-		"Hard ------- 5 turns to guess a number between 1 and 100\n\n"
-		"Insane ------- 10 turns to guess a number between 1 and 1000\n\n";
+		"Easy ------- 4 turns to guess a number between 0 and 10\n\n"
+		"Medium ------- 10 turns to guess a number between 0 and 50\n\n"
+		"Hard ------- 10 turns to guess a number between 0 and 100\n\n"
+		"Insane ------- 10 turns to guess a number between 0 and 1000\n\n";
 	while (true)
 	{
 		string difficulty;
@@ -71,10 +71,12 @@ bool guessHandler(Game& game, int guess)
 	}
 	else if (guess > game.correctAnswer)
 	{
-		cout << "To high!\n\n";
+		cout << "To high!\n"
+			"You have "<<game.numberOfTurnsLeft<<" turn(s) left.\n";
 		return false;
 	}
-	cout << "Too low!\n\n";
+	cout << "Too low!\n"
+		"You have " << game.numberOfTurnsLeft << " turn(s) left.\n";;
 	return false;
 }
 
@@ -96,7 +98,8 @@ void playGame(Game& game)
 	takeTurn(game);
 	if (game.outOfTurns())
 	{
-		cout << "You ran out of turns!\n\n";
+		cout << "You ran out of turns!\n"
+			"The correct answer was "<< game.correctAnswer<<endl;
 	}
 }
 
