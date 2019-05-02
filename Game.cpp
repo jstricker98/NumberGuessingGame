@@ -5,14 +5,14 @@
 easyGame::easyGame()
 {
 	maxNumber = 10;
-	numberOfTurnsLeft = 5;
+	numberOfTurnsLeft = 4;
 	correctAnswer = generateNumberForEasy();
 }
 
 int easyGame::generateNumberForEasy()
 {
 	srand(time(NULL));
-	return ((rand() % 10) + 1);
+	return (rand() % 11);
 }
 
 mediumGame::mediumGame()
@@ -25,7 +25,7 @@ mediumGame::mediumGame()
 int mediumGame::generateNumberForMedium()
 {
 	srand(time(NULL));
-	return ((rand() % 50) + 1);
+	return (rand() % 51);
 }
 
 hardGame::hardGame()
@@ -38,7 +38,7 @@ hardGame::hardGame()
 int hardGame::generateNumberForHard()
 {
 	srand(time(NULL));
-	return ((rand() % 100) + 1);
+	return (rand() % 101);
 }
 
 insaneGame::insaneGame()
@@ -51,7 +51,7 @@ insaneGame::insaneGame()
 int insaneGame::generateNumberForInsane()
 {
 	srand(time(NULL));
-	return ((rand() % 1000) + 1);
+	return (rand() % 1001);
 }
 
 bool Game::guessIsCorrect(int guess)
