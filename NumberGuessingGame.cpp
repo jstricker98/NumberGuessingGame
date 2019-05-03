@@ -12,13 +12,18 @@ void printIntroduction()
 		"But be careful you have a limited number of guesses before you lose\n";
 }
 
-Game selectDifficulty()
+void printDifficultyDefinitions()
 {
 	cout << "\nPlease select which difficulty you would like to play.\n\n"
 		"Easy ------- 4 turns to guess a number between 0 and 10\n\n"
 		"Medium ------- 10 turns to guess a number between 0 and 50\n\n"
 		"Hard ------- 10 turns to guess a number between 0 and 100\n\n"
 		"Insane ------- 10 turns to guess a number between 0 and 1000\n\n";
+}
+
+Game selectDifficulty()
+{
+	printDifficultyDefinitions();
 	while (true)
 	{
 		string difficulty;
@@ -26,14 +31,14 @@ Game selectDifficulty()
 		char difficultyLetter = difficulty[0];
 		switch (tolower(difficultyLetter))
 		{
-		case 'e': return easyGame();
+		case 'e': return Game(4,10);
 			break;
-		case 'm': return mediumGame();
+		case 'm': return Game(10,50);
 			break;
-		case 'h': return hardGame();
+		case 'h': return Game(10,100);
 			break;
-		case 'i': return insaneGame();
-
+		case 'i': return Game(10,1000);
+			break;
 		default: cout << "Please enter a valid option.\n";
 		}
 	}
@@ -44,7 +49,7 @@ bool guessIsValid(int max_number, int guess)
 	return (guess > 0 && guess < max_number);
 }
 
-int getGuess(Game game)
+int getGuess(Game& game)
 {
 	cout << "Please guess a number.\n";
 	int guess;
