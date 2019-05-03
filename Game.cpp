@@ -2,56 +2,17 @@
 #include <ctime>
 #include <cstdlib>
 
-easyGame::easyGame()
+Game::Game(int turns, int max)
 {
-	maxNumber = 10;
-	numberOfTurnsLeft = 4;
-	correctAnswer = generateNumberForEasy();
+	maxNumber = max;
+	numberOfTurnsLeft = turns;
+	correctAnswer = generateNumber(max);
 }
 
-int easyGame::generateNumberForEasy()
+int Game::generateNumber(int max)
 {
 	srand(time(NULL));
-	return (rand() % 11);
-}
-
-mediumGame::mediumGame()
-{
-	maxNumber = 50;
-	numberOfTurnsLeft = 10;
-	correctAnswer = generateNumberForMedium();
-}
-
-int mediumGame::generateNumberForMedium()
-{
-	srand(time(NULL));
-	return (rand() % 51);
-}
-
-hardGame::hardGame()
-{
-	maxNumber = 100;
-	numberOfTurnsLeft = 10;
-	correctAnswer = generateNumberForHard();
-}
-
-int hardGame::generateNumberForHard()
-{
-	srand(time(NULL));
-	return (rand() % 101);
-}
-
-insaneGame::insaneGame()
-{
-	maxNumber = 1000;
-	numberOfTurnsLeft = 10;
-	correctAnswer = generateNumberForInsane();
-}
-
-int insaneGame::generateNumberForInsane()
-{
-	srand(time(NULL));
-	return (rand() % 1001);
+	return (rand() % max++);
 }
 
 bool Game::guessIsCorrect(int guess)
